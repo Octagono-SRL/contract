@@ -18,6 +18,14 @@
         "views/contract_line_forecast_period.xml",
         "views/contract.xml",
     ],
-    "external_dependencies": {"python": ["dateutil"]},
+    # Real PyPI distribution name is python-dateutil, not the bare import
+    # name -- same fix already applied to product_contract's own manifest
+    # on the 15.0 branch; verified live this module (contract_forecast, a
+    # sibling in the same OCA/contract repo) still has the bug upstream at
+    # 16.0, "ERROR: Could not find a version that satisfies the requirement
+    # dateutil (from versions: none)" failing the whole combined pip
+    # install and forcing this platform's own per-package fallback loop,
+    # which has no cross-package version-pin coordination at all.
+    "external_dependencies": {"python": ["python-dateutil"]},
     "post_init_hook": "post_init_hook",
 }
