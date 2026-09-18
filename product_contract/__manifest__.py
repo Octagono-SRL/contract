@@ -18,6 +18,13 @@
     ],
     "installable": True,
     "application": False,
-    "external_dependencies": {"python": ["dateutil"]},
+    # "dateutil" isn't a real PyPI distribution name (404) -- the import
+    # name is dateutil but the package is python-dateutil. A build/
+    # upgrade's combined pip install for every discovered module's
+    # declared deps hard-fails on the first bad name and falls back to
+    # installing every dependency one at a time, which can silently drop
+    # another module's own exact-pinned dependency to whatever a later,
+    # unrelated, unpinned package happens to pull in transitively instead.
+    "external_dependencies": {"python": ["python-dateutil"]},
     "maintainers": ["sbejaoui"],
 }
