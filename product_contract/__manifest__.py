@@ -20,7 +20,7 @@
     ],
     "installable": True,
     "application": False,
-    "external_dependencies": {"python": ["dateutil"]},
+    "external_dependencies": {"python": ["python-dateutil"]},
     "maintainers": ["sbejaoui", "CarlosRoca13"],
     "assets": {
         "web.assets_backend": [
